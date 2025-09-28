@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExportSummary",
+  "type": "object",
+  "required": [
+    "layerCount","componentCount","assetCount","warningCount","warningCap","exceededWarningCap","overrideUsed","largeDocument","timings","versionDir"
+  ],
+  "properties": {
+    "layerCount": {"type":"integer","minimum":0},
+    "componentCount": {"type":"integer","minimum":0},
+    "assetCount": {"type":"integer","minimum":0},
+    "warningCount": {"type":"integer","minimum":0},
+    "warningCap": {"type":"integer","minimum":0},
+    "exceededWarningCap": {"type":"boolean"},
+    "overrideUsed": {"type":"boolean"},
+    "largeDocument": {"type":"boolean"},
+    "timings": {
+      "type":"object",
+      "required":["fetch","preScan","transform","assets","emit","write","total"],
+      "properties": {
+        "fetch": {"type":"number"},
+        "preScan": {"type":"number"},
+        "transform": {"type":"number"},
+        "assets": {"type":"number"},
+        "emit": {"type":"number"},
+        "write": {"type":"number"},
+        "total": {"type":"number"}
+      }
+    },
+    "versionDir": {"type":"string"},
+    "variants": {"type":"array","items":{"type":"string"}},
+    "variantConflicts": {"type":"array","items":{"type":"string"}},
+    "overrideNotice": {"type":"string"}
+  }
+}

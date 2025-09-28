@@ -1,0 +1,52 @@
+{
+  "versionDir": "v20250928-1706-e485f733",
+  "mode": "static",
+  "usedNetwork": false,
+  "fetch": {
+    "totalRequests": 0,
+    "retryCount": 0,
+    "fetchElapsedMs": 0,
+    "retryBudgetMs": 0,
+    "timeouts": 0,
+    "rateLimitCount": 0,
+    "authorizationFailures": 0,
+    "overrideNotice": null
+  },
+  "warnings": [
+    {
+      "code": "LARGE_FILE_NEAR_LIMIT",
+      "message": "Node count 3101 exceeded threshold 3000",
+      "layerRef": null,
+      "meta": {
+        "nodeCount": 3101,
+        "threshold": 3000
+      },
+      "timestamp": "2025-09-28T16:06:32.201Z"
+    }
+  ],
+  "timings": {
+    "fetch": 0,
+    "preScan": 3,
+    "transform": 116,
+    "assets": 0,
+    "emit": 54,
+    "write": 0,
+    "total": 0
+  },
+  "replay": null,
+  "overrideNotice": null,
+  "warningCap": {
+    "threshold": 0.05,
+    "override": false
+  },
+  "layerCount": 3101,
+  "componentCount": 1,
+  "assetCount": 0,
+  "warningCount": 1,
+  "warningCapLimit": 155,
+  "exceededWarningCap": false,
+  "variants": [],
+  "variantConflicts": [],
+  "largeDocument": true,
+  "overrideUsed": false
+}

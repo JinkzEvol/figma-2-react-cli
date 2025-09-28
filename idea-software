@@ -1,0 +1,150 @@
+JavaScript module (the conversion script) that replicates the functionality of the Figroot Figma plugin in an agent-friendly way. This script is responsible for extracting design data from Figma and transforming it into Next.js-compatible React code with Tailwind CSS classes. The following outlines the features and design of this script:
+
+Purpose and Scope: The script’s goal is to convert a Figma design into pixel-perfect front-end code. It focuses on static visual conversion (layout, style, and component hierarchy). Any dynamic behavior or complex state is outside its scope (handled later by developers). By using a deterministic algorithm rather than AI generation, it ensures fidelity to the design (addressing the shortcomings of AI codegen which often misses pixel-level details
+reddit.com
+).
+
+Inputs: The script accepts:
+
+A reference to the Figma design to convert. This can be provided as a Figma file URL or a file ID (and optionally a specific frame or component ID/name within that file).
+
+Configuration options or context, such as:
+
+API Access: Credentials (personal access token or OAuth) for the Figma API to fetch the file data.
+
+Target Format: Whether to generate plain React, Next.js page, or Next.js component. (In most cases it will produce a React component compatible with Next.js, but for full pages it can include Next.js-specific structure).
+
+Project Conventions: Optionally, an object describing naming conventions or existing components to use (this could be provided by the AI agent after analyzing the project). For example, a mapping of Figma component names to import paths of existing React components to use instead of generating new ({ "ButtonPrimary": "@/components/Button.js" }).
+
+Output Paths: If running in a project context, the base folder or module path where generated files should be placed (e.g. pages/ vs components/).
+
+Authentication & API Usage: Using the provided Figma API token, the script calls Figma’s REST API (e.g. GET /v1/files/:fileKey) to retrieve the JSON description of the file’s document structure
+developers.figma.com
+. This JSON includes a node tree with all frames, groups, vectors, text elements, etc., each with properties such as coordinates, dimensions, styles (fill colors, strokes), font properties, and layout info. Every layer/object is represented in this JSON and can be programmatically inspected
+developers.figma.com
+, which is exactly what the script will do. (If the file is large, the script may need to traverse only the needed branch to avoid performance issues.)
+
+Design Parsing Logic: Once the JSON is fetched, the script identifies the target node(s) to convert:
+
+If a specific frame or component ID was provided, it locates that node in the hierarchy.
+
+If not, it selects the first page’s first frame by default, or a top-level component set. (Alternatively, the agent would have the developer specify this to the script.)
+
+It gathers all child layers of that node recursively for conversion. This may include nested frames, groups, vectors, text, etc.
+
+Conversion to React Components: The script traverses the selected Figma node tree and converts it to a React component structure. Key rules and behaviors:
+
+Element Mapping: Each Figma node is mapped to a corresponding JSX element:
+
+Frames and Groups -> usually <div> (or <section>, <header>, etc., if semantic tags can be inferred by layer names or hints, though semantic inference is minimal unless instructed).
+
+Image nodes -> <img> or Next.js <Image> (with import Image from 'next/image') if the context indicates this is an image. The actual image content is fetched via Figma’s image API (e.g. GET image fills), and the file is saved locally so that the code can reference it. The script might name images based on their layer name or an ID. The code will include the image src (path to the saved asset) and appropriate Tailwind classes for sizing or styling. For example, if the design has a company logo vector, the script could export it as an SVG and use it in an <Image> component tag. (Integrating images in this way was shown to be a viable approach in prior art, where all design images are exported and then referenced in code for a NextJS app
+jherr2020.medium.com
+.)
+
+Text nodes -> <span> or <p> containing the text content. The script applies Tailwind classes for font size, weight, color, and line-height matching the Figma text style. If the text node in Figma has a heading style name (like “H1” or a certain size), the script might choose an <h1> - <h6> tag accordingly, but generally it prioritizes visual fidelity over semantic unless configured otherwise.
+
+Components/Instances -> If the Figma node is an instance of a Figma component, by default the script will inline its content (since it’s essentially a group of other nodes). However, an advanced feature is to generate a separate React component for each distinct Figma Component it encounters, to promote reuse. The script could either:
+
+Merge identical components: e.g. if the design uses a “Card” component in multiple places, the script can generate one Card.jsx React component and then in the parent container’s code, render <Card /> multiple times. This requires recognizing identical structures or explicit component names. The agent or developer could hint the script to do this. This approach aligns with how design-to-code tools can maintain consistency by linking design components to code components
+builder.io
+.
+
+If the developer provided a map of Figma component name to existing React component, the script will simply output the corresponding <ComponentName> usage and import statement instead of full JSX for that part. (For example, if the design’s button is named “PrimaryButton” and the mapping says that corresponds to an existing Button component, the output JSX will be <Button label="..."> rather than a new <button> element.)
+
+Layout and Styling with Tailwind: The script translates Figma layout properties into Tailwind CSS classes:
+
+Figma Auto Layout (horizontal or vertical) -> flex container with flex-row/flex-col and corresponding justify-... and items-... classes for alignment. It will use gap-x-* or gap-y-* classes if Figma’s auto-layout spacing is set, or individual mr-* and mb-* margins for spacing between elements if appropriate.
+
+Absolute positioning: If an element is not in auto-layout and has explicit coordinates relative to its parent, the script will use absolute positioning. It will ensure the parent is relative and then use top-[px] left-[px] classes (Tailwind supports arbitrary values in brackets for exact pixel positioning). This preserves the exact overlay positions from Figma. If many elements are absolutely positioned, the script maintains the stacking order by the order of elements and using CSS z-index if necessary.
+
+Sizing: The script applies w-[width] and h-[height] classes for fixed dimensions. If the design uses responsive constraints (e.g. stretch), the script might use w-full for width or rely on parent flex properties to size automatically. All pixel measurements from Figma (which are often integer values) can be directly used in Tailwind as utility classes with brackets (e.g. a 64px border radius becomes rounded-[64px] if not matching a standard size).
+
+Spacing (Margins/Padding): Figma layer spacing is converted to Tailwind margin/padding classes. For example, a frame with 20px padding on all sides -> p-5 if tailwind’s default spacing (5 = 20px by default) matches, otherwise p-[20px]. Similarly, gaps or specific margins between elements become mt-*, mr-* etc. The script tries to use the closest Tailwind value if the number aligns with the 4px grid (common), but to be pixel-perfect it will not hesitate to use arbitrary values for uncommon spacings.
+
+Colors and Typography: The script reads color values (fills, strokes) and text styles:
+
+Colors are output as Tailwind classes if they match the project’s palette (the agent might supply a list of known class names for certain hex values). If not, it uses inline style or Tailwind arbitrary color (e.g. text-[#FF5733]). For background fills, bg-[#FF5733], for text, text-[#FF5733], etc. The goal is exact color reproduction. (Later, the developer might refactor these to use theme tokens if desired.)
+
+Font family, size, weight from Figma are mapped to Tailwind classes (font-sans or custom font if configured, text-xl or text-[18px] for exact size, font-bold, leading-[...] for line-height). If the project’s Tailwind config includes the font and size, those class names are used; otherwise arbitrary values ensure the UI looks right.
+
+If Figma uses effects like drop shadows or blurs, the script will attempt to use Tailwind utilities (shadow-lg etc. if matching) or add a custom class with the exact CSS via style attributes. Since pixel-perfect means even shadows should match, a complex shadow might be inlined like shadow-[0px_4px_10px_rgba(0,0,0,0.25)] if needed.
+
+Responsive Behavior: If the Figma design includes different frame variants for responsive breakpoints, the script can incorporate responsive Tailwind classes. For example, if there’s a mobile layout frame, the agent might merge the styles by using Tailwind’s responsive prefixes (md:, lg:) to adapt at certain breakpoints. However, Figma designs often are static for a single size; in such cases the script will produce a static layout for that size. The developer can later generalize it, or if Figma’s Dev Mode provided some constraints for responsiveness, those can be used.
+
+Code Structure: The script generates a React functional component as a string or AST:
+
+It includes necessary imports (e.g., import Image from 'next/image' if any Next Image is used, or imports for any mapped existing components).
+
+Defines the component, e.g. function Dashboard(props) { ... } export default Dashboard; (or in TSX with an explicit prop interface if needed). Initially, props may not be heavily used unless the design has dynamic text/images that could be passed in; mostly the component will have static JSX corresponding to the static design.
+
+The JSX is formatted with proper nesting reflecting the Figma layer hierarchy. Each child element of a frame becomes a child JSX element (with key if needed for lists).
+
+Comments can be inserted to mark sections or to-dos, for instance: {/* TODO: Implement carousel functionality for this gallery */} if the design had a carousel UI.
+
+The script ensures the code is syntactically correct and as clean as possible (though it may be verbose). It can utilize a template or JSX generator to avoid common mistakes (like forgetting a closing tag, etc.).
+
+Example snippet of generated JSX (illustrative):
+
+<div className="relative bg-white w-[400px] h-[300px] p-5 shadow-[0_4px_10px_rgba(0,0,0,0.25)]">
+  <h1 className="text-[24px] font-bold text-gray-800">Dashboard</h1>
+  <p className="mt-2 text-[14px] text-gray-600">Welcome to the dashboard!</p>
+  <div className="absolute top-[20px] right-[20px]">
+    <Image src="/images/avatar.png" width={40} height={40} className="rounded-full" alt="User avatar"/>
+  </div>
+</div>
+
+
+In the above example, the outer div is positioned relative for any absolutely-positioned children, has exact width/height from Figma, padding, and a custom shadow. Text elements use exact pixel sizes and colors. The image is placed absolutely at a specified position. This JSX would be part of the larger component file.
+
+Output: The primary output of the script is the code for the new component(s). The script could return an object or write files directly:
+
+If used in an interactive agent setting, it might return a data structure like { "Dashboard.tsx": "<code string>" } for the agent to handle (display or save).
+
+If run as a CLI, it could write files to disk immediately (e.g., create a Dashboard.tsx in the specified directory).
+
+It may also output asset files (images exported from Figma) into a specified folder.
+
+The output is designed to be immediately usable in a Next.js application. If it’s a page, the file might include export const metadata = { ... } (for Next 13 app directory) or be placed in pages so Next can pick it up as a route. If it’s a component, it’s ready to be imported where needed.
+
+Integration Support & Agent Collaboration: The script on its own focuses on code generation. However, it’s built to be agent-friendly, meaning it exposes hooks or parameters to align with project context:
+
+For example, the script could accept a flag like reuseComponentsMap (as mentioned) so it will use <Button> from library instead of raw <button> in certain cases. This data would be provided by the AI agent after analyzing the codebase (the agent finds that there is a Button component, so it sets reuseComponentsMap = { "ButtonPrimary": "<Button />" } or similar).
+
+The script could also take an optional onWarning callback that the agent uses to get feedback on any issues. E.g., if the script encounters a Figma effect it cannot translate, it could call onWarning("Unsupported blur effect on layer X") which the agent then surfaces to the developer in chat, ensuring transparency.
+
+The agent and script work in tandem such that the agent handles decision points (asking the user as needed) and the script handles deterministic conversion. For instance, if the script finds 10px spacing that doesn’t match Tailwind’s scale, it might flag that to agent, which then decides (via developer input) whether to use a custom class or adjust to nearest value.
+
+Pixel-Perfect Philosophy: At its core, this conversion tool follows the same philosophy as the Figroot plugin – strictly mirror the design in code. As the Figroot creator emphasized, Figma designs can be directly reverse-engineered into CSS styles
+reddit.com
+. The script embodies this by systematically converting each Figma property to an equivalent CSS/Tailwind style. It avoids creative interpretation. This approach was shown to yield better results than many AI-based or paid solutions, by getting all the details right
+reddit.com
+. The absence of AI “spaghetti” in the conversion ensures that the output doesn’t have unexpected deviations from the design
+reddit.com
+. Developers can trust that if something looks wrong in the output, it’s due to a tangible mapping issue, not an AI hallucination – making it easier to correct. In testing, this logical method proved capable of translating well-constructed Figma files with 100% accuracy in UI detail
+reddit.com
+.
+
+Error Handling and Edge Cases: The script is designed to handle common complexities:
+
+If the Figma file is large or nested deeply, it uses recursion carefully to avoid performance hang-ups (could impose a depth limit or size limit, though typical UI screens are fine).
+
+If it encounters a layer type it doesn’t recognize or that has no direct HTML counterpart (e.g. a video or Lottie animation embed), it will either skip it with a warning or insert a placeholder (perhaps a <div> with a note).
+
+It assumes a well-structured Figma file. If the design has unusual configurations (like clipped groups, boolean operations on vectors), the script either simplifies them (e.g., flattening a boolean vector group into an SVG image) or leaves a comment for the developer to address manually.
+
+The script should log its steps or at least make it easy to debug which Figma node became which code, in case the developer needs to verify the mapping.
+
+Extensibility: This feature spec can evolve in the future:
+
+Responsive variants: In Figma’s new features or design systems, there might be variant components for mobile/desktop. The script could be extended to detect if multiple variants of a component correspond to breakpoints and then generate one responsive React component merging them (using Tailwind’s responsive classes or React responsive libraries).
+
+Design tokens integration: If the project has a design tokens JSON or theme (colors, spacings), the agent could feed that into the script so that the script maps Figma styles to the closest token values or class names. This would further align code with existing conventions (e.g., using text-primary class instead of text-[#123456] if the color matches primary).
+
+Two-way sync: While not in the initial scope, one could imagine using the mapping of Figma components to code components to allow pushing updates in either direction. (For now, it’s one-way: Figma -> Code).
+
+Collaboration with Figma Dev Mode: Figma’s Dev Mode and plugin API might offer additional metadata (like an explicit “export as React code” hint). The script could incorporate any additional data available from Dev Mode to improve the code generation (for example, reading custom properties or notes left by designers about component purpose).
+
+In summary, the conversion script is a highly detailed bridge between Figma and React. It leverages the full fidelity of Figma’s design data (via the API) to produce Tailwind-styled JSX code that is ready to drop into a Next.js project. By adhering to a pixel-perfect, no-AI approach, it ensures the resulting UI matches the designer’s intent exactly, addressing one of the chief reasons teams invest in frontend implementation – to get a polished, professional result
+reddit.com
+. Moreover, by integrating with an AI agent for the hand-off, it doesn’t operate in isolation but rather fits the developer’s workflow, asking intelligent questions and respecting existing project conventions. This combination of automated precision and guided integration drastically reduces the time to go from design to live code, while maintaining code quality and consistency across the codebase.

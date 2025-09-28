@@ -1,0 +1,38 @@
+[
+  {
+    "versionDir": "v20250928-1402-2094dfbf",
+    "baseComponent": "GeneratedComponent",
+    "runTimestamp": "2025-09-28T13:02:05.848Z",
+    "previousVersionDir": null,
+    "fileHashes": {
+      "GeneratedComponent.v1.tsx": "1acc7774"
+    }
+  },
+  {
+    "versionDir": "v20250928-1402-10bf52bb",
+    "baseComponent": "GeneratedComponent",
+    "runTimestamp": "2025-09-28T13:02:55.593Z",
+    "previousVersionDir": "v20250928-1402-2094dfbf",
+    "fileHashes": {
+      "GeneratedComponent.v1.tsx": "1acc7774"
+    }
+  },
+  {
+    "versionDir": "v20250928-1403-04eb1784",
+    "baseComponent": "GeneratedComponent",
+    "runTimestamp": "2025-09-28T13:03:10.877Z",
+    "previousVersionDir": "v20250928-1402-10bf52bb",
+    "fileHashes": {
+      "GeneratedComponent.v1.tsx": "1acc7774"
+    }
+  },
+  {
+    "versionDir": "v20250928-1706-55e820b0",
+    "baseComponent": "GeneratedComponent",
+    "runTimestamp": "2025-09-28T16:06:32.012Z",
+    "previousVersionDir": "v20250928-1403-04eb1784",
+    "fileHashes": {
+      "GeneratedComponent.v1.tsx": "1acc7774"
+    }
+  }
+]

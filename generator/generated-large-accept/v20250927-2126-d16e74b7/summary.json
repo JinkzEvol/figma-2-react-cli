@@ -1,0 +1,22 @@
+{
+  "layerCount": 3101,
+  "componentCount": 1,
+  "assetCount": 0,
+  "warningCount": 0,
+  "warningCap": 155,
+  "exceededWarningCap": false,
+  "overrideUsed": false,
+  "largeDocument": true,
+  "timings": {
+    "fetch": 0,
+    "preScan": 3,
+    "transform": 139,
+    "assets": 0,
+    "emit": 58,
+    "write": 0,
+    "total": 0
+  },
+  "versionDir": "v20250927-2126-d16e74b7",
+  "variants": [],
+  "variantConflicts": []
+}

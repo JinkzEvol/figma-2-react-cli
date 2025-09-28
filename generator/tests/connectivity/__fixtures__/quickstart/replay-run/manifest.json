@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "1.0.0",
+  "fileKey": "FAKEFILE",
+  "nodeId": "0:1",
+  "createdAt": "2025-09-28T12:51:00.000Z",
+  "generatorVersion": "0.1.0",
+  "hash": "b9002ab4",
+  "segments": [
+    {
+      "id": "GET-file-FAKEFILE-0:1",
+      "request": {
+        "method": "GET",
+        "path": "/v1/files/FAKEFILE/nodes",
+        "query": {
+          "ids": "0:1"
+        },
+        "headers": {
+          "accept": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "bodyPath": "responses/segment-0.json",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "recordedAt": "2025-09-28T12:51:00.000Z"
+      },
+  "sha1": "a3dbf5908200b6647879e51ab7b6de863ca853c6",
+      "source": "network"
+    }
+  ],
+  "notes": null
+}

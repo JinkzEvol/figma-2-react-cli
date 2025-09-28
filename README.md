@@ -29,6 +29,33 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Environment Setup
+
+Set the `FIGMA_TOKEN` environment variable in your shell before running the generator. For PowerShell:
+
+```powershell
+$env:FIGMA_TOKEN = "<your-figma-personal-access-token>"
+```
+
+Tokens must carry the `files:read` scope. Never commit them to the repository—`PAT` files are ignored by `.gitignore`.
+
+## Generator CLI
+
+The deterministic converter lives in the `generator/` directory.
+
+```powershell
+cd generator
+npm install
+npm run build
+node dist/cli/index.js --file <FILE_KEY> --node <NODE_ID> --out generated --variants --reuse-components
+```
+
+Use `scripts/test-figma-api.mjs` to quickly verify API access before running the full pipeline:
+
+```powershell
+node scripts/test-figma-api.mjs --file <FILE_KEY> --node <NODE_ID>
+```
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.

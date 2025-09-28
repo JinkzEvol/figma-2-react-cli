@@ -1,0 +1,119 @@
+{
+  "versionDir": "v20250928-1402-6e5a3311",
+  "mode": "static",
+  "usedNetwork": false,
+  "fetch": {
+    "totalRequests": 0,
+    "retryCount": 0,
+    "fetchElapsedMs": 0,
+    "retryBudgetMs": 0,
+    "timeouts": 0,
+    "rateLimitCount": 0,
+    "authorizationFailures": 0,
+    "overrideNotice": null
+  },
+  "warnings": [
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 1",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-28T13:02:06.263Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 2",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-28T13:02:06.263Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 3",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-28T13:02:06.263Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 4",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-28T13:02:06.263Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 5",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-28T13:02:06.263Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 6",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-28T13:02:06.263Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 7",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-28T13:02:06.263Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 8",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-28T13:02:06.263Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 9",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-28T13:02:06.263Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 10",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-28T13:02:06.263Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 11",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-28T13:02:06.263Z"
+    }
+  ],
+  "timings": {
+    "fetch": 0,
+    "preScan": 0,
+    "transform": 1,
+    "assets": 0,
+    "emit": 17,
+    "write": 0,
+    "total": 0
+  },
+  "replay": null,
+  "overrideNotice": null,
+  "warningCap": {
+    "threshold": 0.05,
+    "override": false
+  },
+  "layerCount": 200,
+  "componentCount": 1,
+  "assetCount": 0,
+  "warningCount": 11,
+  "warningCapLimit": 10,
+  "exceededWarningCap": true,
+  "variants": [],
+  "variantConflicts": [],
+  "largeDocument": false,
+  "overrideUsed": false
+}

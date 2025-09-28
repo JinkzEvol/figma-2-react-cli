@@ -1,0 +1,22 @@
+{
+  "document": {
+    "id": "0:1",
+    "name": "Landing Page",
+    "type": "FRAME",
+    "children": [
+      {
+        "id": "1:2",
+        "name": "Hero Section",
+        "type": "FRAME",
+        "children": [
+          {
+            "id": "2:3",
+            "name": "Heading",
+            "type": "TEXT",
+            "characters": "Welcome"
+          }
+        ]
+      }
+    ]
+  }
+}

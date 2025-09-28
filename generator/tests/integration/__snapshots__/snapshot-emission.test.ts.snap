@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`integration: snapshot emission ordering emits deterministic component structure and class ordering 1`] = `
+"import React from 'react';
+
+export const SnapshotDemo = () => {
+  return (
+    <div className="flex gap-[16px] p-6 text-red-500 bg-blue-500 font-bold tracking-tight">
+      <div data-node="root">
+        <div data-node="child-1">
+          <div data-node="grandchild-1">
+          </div>
+        </div>
+        <div data-node="child-2">
+        </div>
+      </div>
+    </div>
+  );
+};
+"
+`;

@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TraceEntryList",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["layerId","layerName","type","actions"],
+    "properties": {
+      "layerId": {"type":"string"},
+      "layerName": {"type":"string"},
+      "type": {"type":"string"},
+      "ignored": {"type":"boolean"},
+      "actions": {"type":"array","items":{"type":"string"}},
+      "warnings": {"type":"array","items":{"type":"string"}}
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "versionDir": "v20250928-1255-3e358b73",
+  "mode": "live",
+  "usedNetwork": true,
+  "hash": "d3f4c5a1",
+  "fetch": {
+    "totalRequests": 1,
+    "retryCount": 0,
+    "fetchElapsedMs": 520.0,
+    "retryBudgetMs": 0,
+    "timeouts": 0,
+    "rateLimitCount": 0,
+    "authorizationFailures": 0
+  },
+  "warnings": [],
+  "timings": {
+    "total": 1500,
+    "fetch": 520.0
+  },
+  "replay": null,
+  "overrideNotice": null
+}

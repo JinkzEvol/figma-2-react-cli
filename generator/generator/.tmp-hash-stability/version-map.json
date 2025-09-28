@@ -1,0 +1,20 @@
+[
+  {
+    "versionDir": "v20250928-1706-d3a99391",
+    "baseComponent": "GeneratedComponent",
+    "runTimestamp": "2025-09-28T16:06:32.894Z",
+    "previousVersionDir": null,
+    "fileHashes": {
+      "GeneratedComponent.v1.tsx": "96b9236d"
+    }
+  },
+  {
+    "versionDir": "v20250928-1706-5ce8501a",
+    "baseComponent": "GeneratedComponent",
+    "runTimestamp": "2025-09-28T16:06:32.978Z",
+    "previousVersionDir": "v20250928-1706-d3a99391",
+    "fileHashes": {
+      "GeneratedComponent.v1.tsx": "96b9236d"
+    }
+  }
+]

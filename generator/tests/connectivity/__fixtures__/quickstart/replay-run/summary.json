@@ -1,0 +1,27 @@
+{
+  "versionDir": "v20250928-1255-4cf62091",
+  "mode": "replay",
+  "usedNetwork": false,
+  "hash": "d3f4c5a1",
+  "fetch": {
+    "totalRequests": 1,
+    "retryCount": 0,
+    "fetchElapsedMs": 180.0,
+    "retryBudgetMs": 0,
+    "timeouts": 0,
+    "rateLimitCount": 0,
+    "authorizationFailures": 0
+  },
+  "warnings": [],
+  "timings": {
+    "total": 900,
+    "fetch": 180.0
+  },
+  "replay": {
+    "artifactPath": "generator/tests/connectivity/__fixtures__/quickstart/replay-run",
+  "manifestHash": "b9002ab4",
+    "createdAt": "2025-09-28T12:51:00.000Z",
+    "ageDays": 0
+  },
+  "overrideNotice": null
+}

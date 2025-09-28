@@ -1,0 +1,59 @@
+{
+  "versionDir": "v20250928-1402-10bf52bb",
+  "mode": "static",
+  "usedNetwork": false,
+  "fetch": {
+    "totalRequests": 0,
+    "retryCount": 0,
+    "fetchElapsedMs": 0,
+    "retryBudgetMs": 0,
+    "timeouts": 0,
+    "rateLimitCount": 0,
+    "authorizationFailures": 0,
+    "overrideNotice": null
+  },
+  "warnings": [
+    {
+      "code": "LARGE_FILE_NEAR_LIMIT",
+      "message": "Node count 40 exceeded threshold 3000",
+      "layerRef": null,
+      "meta": {
+        "nodeCount": 40,
+        "threshold": 3000
+      },
+      "timestamp": "2025-09-28T13:02:55.575Z"
+    },
+    {
+      "code": "DEPTH_LIMIT_REACHED",
+      "message": "Depth limit 25 reached at d24",
+      "layerRef": "d24",
+      "meta": null,
+      "timestamp": "2025-09-28T13:02:55.577Z"
+    }
+  ],
+  "timings": {
+    "fetch": 0,
+    "preScan": 0,
+    "transform": 2,
+    "assets": 0,
+    "emit": 15,
+    "write": 0,
+    "total": 0
+  },
+  "replay": null,
+  "overrideNotice": null,
+  "warningCap": {
+    "threshold": 0.05,
+    "override": false
+  },
+  "layerCount": 1025,
+  "componentCount": 1,
+  "assetCount": 0,
+  "warningCount": 2,
+  "warningCapLimit": 51,
+  "exceededWarningCap": false,
+  "variants": [],
+  "variantConflicts": [],
+  "largeDocument": true,
+  "overrideUsed": false
+}

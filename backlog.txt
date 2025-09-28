@@ -1,0 +1,9 @@
+Figma API Versioning & Breaking Changes: The plan assumes the Figma API is stable. There is no task for creating a suite of "API contract tests" that validate the structure of the JSON received from Figma's API. If Figma changes its node structure, the entire tool could break silently.
+
+Recommendation: Add a task to save a sample Figma API JSON response as a fixture and write a test that validates its core structure. This test would fail if Figma introduces a breaking change, alerting you immediately.
+Performance Beyond the "Happy Path": The plan includes a performance test (T068) for a "typical" frame. However, it doesn't explicitly address performance profiling for the worst-case scenarios, such as a frame with thousands of single-character text nodes, each with a unique style. The traversal and style-mapping logic could become a bottleneck.
+
+Recommendation: Add a "Polish" phase task for stress-testing with a deliberately pathological Figma file to identify and optimize performance hotspots.
+Developer Experience (DX) for the Generator Itself: The plan is excellent for producing the output, but there are few tasks focused on the experience of the developer using the generator. The error messages from a failed run (e.g., a fidelity diff failure) could be cryptic.
+
+Recommendation: Add a task to design and test the "failure report" format. When a fidelity test fails, the summary should not just say "failed" but pinpoint which layers deviated and by how much. This makes debugging much faster.

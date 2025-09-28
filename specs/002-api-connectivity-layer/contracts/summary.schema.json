@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://figma-2-react.specs/002/summary.schema.json",
+  "title": "Generator Summary Envelope",
+  "type": "object",
+  "required": [
+    "versionDir",
+    "mode",
+    "usedNetwork",
+    "fetch",
+    "warnings",
+    "timings",
+    "layerCount",
+    "componentCount",
+    "assetCount",
+    "warningCount",
+    "warningCap",
+    "warningCapLimit",
+    "exceededWarningCap",
+    "overrideUsed",
+    "largeDocument"
+  ],
+  "properties": {
+    "versionDir": {
+      "type": "string",
+      "pattern": "^v[0-9]{8}-[0-9]{4}-[a-f0-9]{8}$"
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["live", "replay", "static"]
+    },
+    "usedNetwork": {
+      "type": "boolean"
+    },
+    "fetch": {
+      "type": "object",
+      "required": [
+        "totalRequests",
+        "retryCount",
+        "fetchElapsedMs",
+        "retryBudgetMs",
+        "timeouts",
+        "rateLimitCount",
+        "authorizationFailures"
+      ],
+      "properties": {
+        "totalRequests": { "type": "integer", "minimum": 0 },
+        "retryCount": { "type": "integer", "minimum": 0 },
+        "fetchElapsedMs": { "type": "number", "minimum": 0 },
+        "retryBudgetMs": { "type": "number", "minimum": 0, "maximum": 7500 },
+        "timeouts": { "type": "integer", "minimum": 0 },
+        "rateLimitCount": { "type": "integer", "minimum": 0 },
+        "authorizationFailures": { "type": "integer", "minimum": 0 },
+        "overrideNotice": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "message"],
+        "properties": {
+          "code": { "type": "string" },
+          "message": { "type": "string" },
+          "layerRef": { "type": ["string", "null"] },
+          "meta": { "type": ["object", "null"], "additionalProperties": true },
+          "timestamp": { "type": ["string", "null"], "format": "date-time" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "timings": {
+      "type": "object",
+      "required": ["fetch", "preScan", "transform", "assets", "emit", "write", "total"],
+      "properties": {
+        "fetch": { "type": "number", "minimum": 0 },
+        "preScan": { "type": "number", "minimum": 0 },
+        "transform": { "type": "number", "minimum": 0 },
+        "assets": { "type": "number", "minimum": 0 },
+        "emit": { "type": "number", "minimum": 0 },
+        "write": { "type": "number", "minimum": 0 },
+        "total": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "replay": {
+      "type": ["object", "null"],
+      "required": ["artifactPath", "manifestHash", "createdAt", "ageDays"],
+      "properties": {
+        "artifactPath": { "type": "string" },
+        "manifestHash": { "type": "string", "pattern": "^[a-f0-9]{8}$" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "ageDays": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "overrideNotice": {
+      "type": ["string", "null"]
+    },
+    "warningCap": {
+      "type": "object",
+      "required": ["threshold", "override"],
+      "properties": {
+        "threshold": { "type": "number", "minimum": 0, "maximum": 1 },
+        "override": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "layerCount": { "type": "integer", "minimum": 0 },
+    "componentCount": { "type": "integer", "minimum": 0 },
+    "assetCount": { "type": "integer", "minimum": 0 },
+    "warningCount": { "type": "integer", "minimum": 0 },
+    "warningCapLimit": { "type": "integer", "minimum": 0 },
+    "exceededWarningCap": { "type": "boolean" },
+    "overrideUsed": { "type": "boolean" },
+    "largeDocument": { "type": "boolean" },
+    "variants": { "type": "array", "items": { "type": "string" } },
+    "variantConflicts": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

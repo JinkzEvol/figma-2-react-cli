@@ -1,0 +1,20 @@
+[
+  {
+    "versionDir": "v20250928-1706-a3bfddf9",
+    "baseComponent": "PrimaryComponent",
+    "runTimestamp": "2025-09-28T16:06:32.865Z",
+    "previousVersionDir": null,
+    "fileHashes": {
+      "CompA.v1.tsx": "631e2919"
+    }
+  },
+  {
+    "versionDir": "v20250928-1706-526c259c",
+    "baseComponent": "PrimaryComponent",
+    "runTimestamp": "2025-09-28T16:06:32.894Z",
+    "previousVersionDir": "v20250928-1706-a3bfddf9",
+    "fileHashes": {
+      "CompA.v2.tsx": "f49a9b9e"
+    }
+  }
+]
