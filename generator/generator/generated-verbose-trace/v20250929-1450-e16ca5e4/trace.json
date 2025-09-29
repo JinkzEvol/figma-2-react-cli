@@ -1,0 +1,24 @@
+[
+  {
+    "layerId": "fetch-static",
+    "layerName": "Fetch Session",
+    "type": "FETCH",
+    "ignored": false,
+    "actions": [
+      "source=static",
+      "totalRequests=0",
+      "retries=0"
+    ],
+    "warnings": [],
+    "depth": 0,
+    "source": "static"
+  },
+  {
+    "layerId": "0:1",
+    "layerName": "RootFrame",
+    "type": "FRAME",
+    "ignored": false,
+    "actions": [],
+    "depth": 0
+  }
+]
