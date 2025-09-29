@@ -37,7 +37,7 @@ class FigmaClient {
     authHeaders() {
         if (!this.token)
             throw new Error('Missing FIGMA_TOKEN');
-        return { Authorization: `Bearer ${this.token}` };
+        return { 'X-Figma-Token': this.token };
     }
     async parseResponseBody(res) {
         const text = await res.body.text();

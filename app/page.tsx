@@ -1,9 +1,29 @@
+"use client";
 import Image from "next/image";
 import DesignPreviewCardInteractive from "./components/DesignPreviewCardInteractive";
-import { getAllGeneratedPreviews } from "./lib/generated-content";
+import { GeneratedPreview } from "./lib/generated-content";
+import { useEffect, useState } from "react";
 
-export default async function Home() {
-  const allPreviews = await getAllGeneratedPreviews();
+export default function Home() {
+  const [allPreviews, setAllPreviews] = useState<GeneratedPreview[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPreviews() {
+      try {
+        const response = await fetch('/api/generated-previews');
+        if (response.ok) {
+          const previews = await response.json();
+          setAllPreviews(previews);
+        }
+      } catch (error) {
+        console.error('Failed to fetch previews:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPreviews();
+  }, []);
 
   return (
     <div className="font-sans min-h-screen">
@@ -29,7 +49,16 @@ export default async function Home() {
           </div>
         </div>
 
-        {allPreviews.length === 0 ? (
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="text-gray-500 mb-2">
+              <svg className="w-8 h-8 mx-auto mb-2 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+            </div>
+            <p className="text-gray-600">Loading generated components...</p>
+          </div>
+        ) : allPreviews.length === 0 ? (
           <div className="text-center py-12">
             <div className="text-gray-500 mb-2">
               <svg className="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

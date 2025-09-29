@@ -1,0 +1,41 @@
+{
+  "versionDir": "v20250929-2122-64eca059",
+  "mode": "live",
+  "usedNetwork": true,
+  "fetch": {
+    "totalRequests": 1,
+    "retryCount": 0,
+    "fetchElapsedMs": 897.4442000000001,
+    "retryBudgetMs": 0,
+    "timeouts": 0,
+    "rateLimitCount": 0,
+    "authorizationFailures": 0,
+    "overrideNotice": null
+  },
+  "warnings": [],
+  "timings": {
+    "fetch": 898,
+    "preScan": 0,
+    "transform": 2,
+    "assets": 0,
+    "emit": 4,
+    "write": 0,
+    "total": 0
+  },
+  "replay": null,
+  "overrideNotice": null,
+  "warningCap": {
+    "threshold": 0.05,
+    "override": false
+  },
+  "layerCount": 67,
+  "componentCount": 1,
+  "assetCount": 0,
+  "warningCount": 0,
+  "warningCapLimit": 3,
+  "exceededWarningCap": false,
+  "variants": [],
+  "variantConflicts": [],
+  "largeDocument": false,
+  "overrideUsed": false
+}

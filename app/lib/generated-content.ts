@@ -30,7 +30,7 @@ export async function findGeneratedOutputs(): Promise<string[]> {
   
   try {
     const entries = await fs.readdir(generatorPath);
-    return entries.filter(entry => entry.startsWith('generated-'));
+    return entries.filter(entry => entry.startsWith('generated'));
   } catch (error) {
     console.warn('Unable to read generator directory:', error);
     return [];
