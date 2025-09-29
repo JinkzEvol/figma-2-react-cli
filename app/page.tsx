@@ -1,9 +1,10 @@
 import Image from "next/image";
 import DesignPreviewCardInteractive from "./components/DesignPreviewCardInteractive";
-import { getMostRecentPreview } from "./lib/generated-content";
+import { getAllGeneratedPreviews } from "./lib/generated-content";
 
 export default async function Home() {
-  const preview = await getMostRecentPreview();
+  const allPreviews = await getAllGeneratedPreviews();
+  const topTwoPreviews = allPreviews.slice(0, 2); // Get the top 2 most recent
 
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
@@ -19,14 +20,28 @@ export default async function Home() {
         
         <div className="text-center sm:text-left">
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Figma → React CLI</h1>
-          <p className="text-gray-600 max-w-2xl">
+          <p className="text-gray-600 max-w-4xl">
             Convert Figma designs to deterministic, pixel-perfect React components with Tailwind CSS. 
             View your latest generated components below.
           </p>
         </div>
 
-        <div className="w-full max-w-2xl">
-          <DesignPreviewCardInteractive preview={preview} />
+        <div className="w-full max-w-4xl">
+          {topTwoPreviews.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-gray-500">No generated components found. Run the generator to create your first component preview.</p>
+            </div>
+          ) : (
+            <div className="grid gap-6 md:grid-cols-2">
+              {topTwoPreviews.map((preview, index) => (
+                <DesignPreviewCardInteractive 
+                  key={`${preview.outputPath}-${preview.versionDir}`} 
+                  preview={preview} 
+                  rank={index + 1}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">

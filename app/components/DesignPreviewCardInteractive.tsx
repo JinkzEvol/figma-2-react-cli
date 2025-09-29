@@ -7,6 +7,7 @@ import CodeActions from "./CodeActions";
 
 interface DesignPreviewCardProps {
   preview: GeneratedPreview | null;
+  rank?: number;
 }
 
 function formatTimestamp(timestamp: string): string {
@@ -26,7 +27,7 @@ function getOutputDisplayName(outputPath: string): string {
     .join(' ');
 }
 
-export default function DesignPreviewCard({ preview }: DesignPreviewCardProps) {
+export default function DesignPreviewCard({ preview, rank }: DesignPreviewCardProps) {
   const [showCode, setShowCode] = useState(false);
 
   if (!preview) {
@@ -57,8 +58,14 @@ export default function DesignPreviewCard({ preview }: DesignPreviewCardProps) {
           <p className="text-sm text-gray-600">{displayName}</p>
         </div>
         <div className="flex items-center space-x-2">
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-            Latest
+          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+            rank === 1 
+              ? 'bg-green-100 text-green-800' 
+              : rank === 2 
+                ? 'bg-blue-100 text-blue-800' 
+                : 'bg-gray-100 text-gray-800'
+          }`}>
+            {rank === 1 ? 'Most Recent' : rank === 2 ? '2nd Most Recent' : 'Latest'}
           </span>
         </div>
       </div>
