@@ -17,7 +17,12 @@ export default function DynamicComponentRenderer({ tsxContent, componentName }: 
     const extractComponentFunction = (tsxContent: string): React.ComponentType | null => {
       try {
         // Extract the JSX return content from the component
-        const jsxMatch = tsxContent.match(/return\s*\(\s*([\s\S]*?)\s*\);/);
+        // Try to match parenthesized return first
+        let jsxMatch = tsxContent.match(/return\s*\(\s*([\s\S]*?)\s*\);/);
+        // If not found, try to match non-parenthesized return (single-line or multi-line)
+        if (!jsxMatch) {
+          jsxMatch = tsxContent.match(/return\s+([\s\S]*?);/);
+        }
         if (!jsxMatch) {
           return null;
         }
