@@ -14,6 +14,10 @@ generator/node_modules/
 # testing
 /coverage
 
+# temporary test files
+test-*.js
+*.test.tmp
+
 # next.js
 /.next/
 /out/

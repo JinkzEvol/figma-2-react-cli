@@ -1,0 +1,119 @@
+{
+  "versionDir": "v20250929-1547-a2effb13",
+  "mode": "static",
+  "usedNetwork": false,
+  "fetch": {
+    "totalRequests": 0,
+    "retryCount": 0,
+    "fetchElapsedMs": 0,
+    "retryBudgetMs": 0,
+    "timeouts": 0,
+    "rateLimitCount": 0,
+    "authorizationFailures": 0,
+    "overrideNotice": "Warning threshold bypassed"
+  },
+  "warnings": [
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 1",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T15:47:45.047Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 2",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T15:47:45.047Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 3",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T15:47:45.047Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 4",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T15:47:45.047Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 5",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T15:47:45.047Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 6",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T15:47:45.047Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 7",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T15:47:45.047Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 8",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T15:47:45.047Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 9",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T15:47:45.047Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 10",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T15:47:45.047Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 11",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T15:47:45.047Z"
+    }
+  ],
+  "timings": {
+    "fetch": 0,
+    "preScan": 0,
+    "transform": 0,
+    "assets": 0,
+    "emit": 1,
+    "write": 0,
+    "total": 0
+  },
+  "replay": null,
+  "overrideNotice": "Warning threshold bypassed",
+  "warningCap": {
+    "threshold": 0.05,
+    "override": true
+  },
+  "layerCount": 200,
+  "componentCount": 1,
+  "assetCount": 0,
+  "warningCount": 11,
+  "warningCapLimit": 10,
+  "exceededWarningCap": false,
+  "variants": [],
+  "variantConflicts": [],
+  "largeDocument": false,
+  "overrideUsed": true
+}
