@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getLatestVersion } from "../../../lib/generated-content";
+import { getSpecificVersion } from "../../../lib/generated-content";
 import CodeActions from "../../../components/CodeActions";
 import DynamicComponentRenderer from "../../../components/DynamicComponentRenderer";
 
@@ -33,9 +33,9 @@ export default async function PreviewPage({ params }: PreviewPageProps) {
   const decodedOutputPath = decodeURIComponent(outputPath);
   const decodedVersionDir = decodeURIComponent(versionDir);
   
-  const preview = await getLatestVersion(decodedOutputPath);
+  const preview = await getSpecificVersion(decodedOutputPath, decodedVersionDir);
   
-  if (!preview || preview.versionDir !== decodedVersionDir) {
+  if (!preview) {
     notFound();
   }
   

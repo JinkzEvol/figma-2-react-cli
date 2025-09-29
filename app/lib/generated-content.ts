@@ -55,7 +55,33 @@ export async function getLatestVersion(generatedOutputDir: string): Promise<Gene
     
     // Get the latest version (last entry)
     const latestVersion = versionMap[versionMap.length - 1];
-    const versionPath = path.join(outputPath, latestVersion.versionDir);
+    
+    return await getSpecificVersion(generatedOutputDir, latestVersion.versionDir);
+  } catch (error) {
+    console.warn(`Unable to read version data for ${generatedOutputDir}:`, error);
+    return null;
+  }
+}
+
+/**
+ * Get a specific version from a generated output directory
+ */
+export async function getSpecificVersion(generatedOutputDir: string, versionDir: string): Promise<GeneratedPreview | null> {
+  const outputPath = path.join(process.cwd(), 'generator', generatedOutputDir);
+  
+  try {
+    // Check if version-map.json exists
+    const versionMapPath = path.join(outputPath, 'version-map.json');
+    const versionMapContent = await fs.readFile(versionMapPath, 'utf8');
+    const versionMap: VersionRecord[] = JSON.parse(versionMapContent);
+    
+    // Find the specific version
+    const targetVersion = versionMap.find(v => v.versionDir === versionDir);
+    if (!targetVersion) {
+      return null;
+    }
+    
+    const versionPath = path.join(outputPath, targetVersion.versionDir);
     
     // Find the TSX file
     const files = await fs.readdir(versionPath);
@@ -79,9 +105,9 @@ export async function getLatestVersion(generatedOutputDir: string): Promise<Gene
     }
     
     return {
-      versionDir: latestVersion.versionDir,
-      baseComponent: latestVersion.baseComponent,
-      runTimestamp: latestVersion.runTimestamp,
+      versionDir: targetVersion.versionDir,
+      baseComponent: targetVersion.baseComponent,
+      runTimestamp: targetVersion.runTimestamp,
       tsxContent,
       summaryData,
       outputPath: generatedOutputDir
