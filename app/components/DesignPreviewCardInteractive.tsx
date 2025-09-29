@@ -63,9 +63,18 @@ export default function DesignPreviewCard({ preview, rank }: DesignPreviewCardPr
               ? 'bg-green-100 text-green-800' 
               : rank === 2 
                 ? 'bg-blue-100 text-blue-800' 
-                : 'bg-gray-100 text-gray-800'
+                : rank === 3
+                  ? 'bg-purple-100 text-purple-800'
+                  : 'bg-gray-100 text-gray-800'
           }`}>
-            {rank === 1 ? 'Most Recent' : rank === 2 ? '2nd Most Recent' : 'Latest'}
+            {rank === 1 
+              ? 'Most Recent' 
+              : rank === 2 
+                ? '2nd Most Recent' 
+                : rank === 3
+                  ? '3rd Most Recent'
+                  : `#${rank}`
+            }
           </span>
         </div>
       </div>
