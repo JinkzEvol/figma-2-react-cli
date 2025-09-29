@@ -1,5 +1,5 @@
 {
-  "versionDir": "v20250929-1450-f616df2b",
+  "versionDir": "v20250929-1547-b2401127",
   "mode": "static",
   "usedNetwork": false,
   "fetch": {
@@ -18,7 +18,7 @@
     "preScan": 0,
     "transform": 0,
     "assets": 0,
-    "emit": 3,
+    "emit": 2,
     "write": 0,
     "total": 0
   },

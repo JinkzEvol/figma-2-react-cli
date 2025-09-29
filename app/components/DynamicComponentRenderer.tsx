@@ -36,7 +36,7 @@ export default function DynamicComponentRenderer({ tsxContent, componentName }: 
                       <span className="text-sm font-medium text-blue-800">Root Container</span>
                     </div>
                     <div className="text-xs text-blue-600 mt-1">
-                      data-node="root"
+                      data-node=&quot;root&quot;
                     </div>
                   </div>
                   <div className="bg-gray-100 border border-gray-300 p-3 rounded">
@@ -44,7 +44,7 @@ export default function DynamicComponentRenderer({ tsxContent, componentName }: 
                       <div className="text-center">
                         <div className="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mx-auto mb-2"></div>
                         <div className="text-xs text-gray-600">Generated Component Content</div>
-                        <div className="text-xs text-gray-500 mt-1">className="flex flex-col"</div>
+                        <div className="text-xs text-gray-500 mt-1">className=&quot;flex flex-col&quot;</div>
                       </div>
                     </div>
                   </div>

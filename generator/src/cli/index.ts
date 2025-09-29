@@ -60,7 +60,7 @@ export async function main(argv: string[] = process.argv): Promise<number> {
     .description('Deterministic Figma → React generator')
     .requiredOption('--file <fileKey>', 'Figma file key')
     .requiredOption('--node <nodeId>', 'Root node id')
-    .option('--out <dir>', 'Output parent directory', 'generated')
+    .option('--out <dir>', 'Output parent directory', 'generated-default')
     .option('--variants', 'Enable responsive variants', false)
     .option('--reuse-components', 'Enable component reuse detection', true)
     .option('--ignore-warning-threshold', 'Bypass warning cap failure', false)
