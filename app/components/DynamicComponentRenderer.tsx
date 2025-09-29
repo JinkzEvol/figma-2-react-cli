@@ -178,14 +178,14 @@ export default function DynamicComponentRenderer({ tsxContent, componentName }: 
     let i = 0;
     
     while (i < content.length) {
-      if (content.substring(i).startsWith('<div')) {
+      if (content.slice(i, i + 4) === '<div') {
         if (depth === 0) {
           current = '';
         }
         depth++;
         current += '<div';
         i += 4;
-      } else if (content.substring(i).startsWith('</div>')) {
+      } else if (content.slice(i, i + 6) === '</div>') {
         current += '</div>';
         depth--;
         if (depth === 0 && current.trim()) {
