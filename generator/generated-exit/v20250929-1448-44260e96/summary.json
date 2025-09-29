@@ -1,0 +1,392 @@
+{
+  "versionDir": "v20250929-1448-44260e96",
+  "mode": "static",
+  "usedNetwork": false,
+  "fetch": {
+    "totalRequests": 0,
+    "retryCount": 0,
+    "fetchElapsedMs": 0,
+    "retryBudgetMs": 0,
+    "timeouts": 0,
+    "rateLimitCount": 0,
+    "authorizationFailures": 0,
+    "overrideNotice": null
+  },
+  "warnings": [
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 1",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 2",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 3",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 4",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 5",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 6",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 7",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 8",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 9",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 10",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 11",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 12",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 13",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 14",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 15",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 16",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 17",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 18",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 19",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 20",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 21",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 22",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 23",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 24",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 25",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 26",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 27",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 28",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 29",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 30",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 31",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 32",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 33",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 34",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 35",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 36",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 37",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 38",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 39",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 40",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 41",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 42",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 43",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 44",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 45",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 46",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 47",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 48",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 49",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    },
+    {
+      "code": "TEST_WARNING",
+      "message": "Injected warning 50",
+      "layerRef": null,
+      "meta": null,
+      "timestamp": "2025-09-29T14:48:32.011Z"
+    }
+  ],
+  "timings": {
+    "fetch": 0,
+    "preScan": 0,
+    "transform": 0,
+    "assets": 0,
+    "emit": 1,
+    "write": 0,
+    "total": 0
+  },
+  "replay": null,
+  "overrideNotice": null,
+  "warningCap": {
+    "threshold": 0.05,
+    "override": true
+  },
+  "layerCount": 1,
+  "componentCount": 1,
+  "assetCount": 0,
+  "warningCount": 50,
+  "warningCapLimit": 0,
+  "exceededWarningCap": false,
+  "variants": [],
+  "variantConflicts": [],
+  "largeDocument": false,
+  "overrideUsed": true
+}

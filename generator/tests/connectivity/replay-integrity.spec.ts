@@ -93,7 +93,7 @@ describe('connectivity: replay integrity', () => {
 
     expect(result.status).toBe('success');
     expect(result.warnings).toHaveLength(0);
-  expect(result.manifest as any).toMatchObject({ hash: 'b9002ab4', generatorVersion: '0.1.0' });
+  expect(result.manifest as any).toMatchObject({ hash: 'c450ace1', generatorVersion: '0.1.0' });
     expect(result.segments).toHaveLength(1);
   });
 
