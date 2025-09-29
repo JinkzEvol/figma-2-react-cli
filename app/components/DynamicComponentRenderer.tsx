@@ -96,12 +96,19 @@ export default function DynamicComponentRenderer({ tsxContent, componentName }: 
     if (openTagMatch && openTagMatch[1]) {
       const attrsStr = openTagMatch[1].trim();
       // Parse className
-      const classMatch = attrsStr.match(/className="([^"]*)"/);
+      // Parse className (double quotes, single quotes, or template literals)
+      let classMatch =
+        attrsStr.match(/className="([^"]*)"/) ||
+        attrsStr.match(/className='([^']*)'/) ||
+        attrsStr.match(/className={`([^`]*)`}/);
       if (classMatch) {
         props.className = classMatch[1];
       }
-      // Parse data-node
-      const dataNodeMatch = attrsStr.match(/data-node="([^"]*)"/);
+      // Parse data-node (double quotes, single quotes, or template literals)
+      let dataNodeMatch =
+        attrsStr.match(/data-node="([^"]*)"/) ||
+        attrsStr.match(/data-node='([^']*)'/) ||
+        attrsStr.match(/data-node={`([^`]*)`}/);
       if (dataNodeMatch) {
         props['data-node'] = dataNodeMatch[1];
       }
